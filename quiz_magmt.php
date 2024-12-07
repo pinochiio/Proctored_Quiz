@@ -123,12 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'anshishubhipr@gmail.com';
-                    $mail->Password = 'hpwczembjzsarnjv';
+                    $mail->Username = '';
+                    $mail->Password = '';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
     
-                    $mail->setFrom('anshishubhipr@gmail.com', 'Quiz Management');
+                    $mail->setFrom('', 'Quiz Management');
                     $mail->addAddress($candidate_email, $candidate_name);
     
                     $mail->isHTML(true);
