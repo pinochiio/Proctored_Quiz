@@ -19,6 +19,95 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+
+    .faq-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .faq-item {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .faq-item h3 {
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .faq-item p {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        display: none; /* Initially hidden */
+    }
+
+    .faq-item p.show {
+        display: block;
+    }
+
+    .arrow {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .arrow.rotate {
+        transform: rotate(90deg);
+    }
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-info p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: transparent;
+        background: #fa574e;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        transition: transform 0.3s, background 0.3s, color 0.3s;
+        text-decoration: none;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.2);
+        color: white;
+    }
+</style>
 <body>
     <header>
         <div class="navbar">
@@ -38,6 +127,7 @@ if (!isset($_SESSION['user_id'])) {
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="support.php">Contact Us</a></li>
+                    <li><a href="candidate_dashboard.php">Dashboard</a></li>
                     <li><a href="logout.php" class="btn login-btn">Logout</a></li>
                 </ul>
             </nav>
@@ -75,8 +165,8 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="feature">
                 <i class="fas fa-trophy"></i>
-                <h3>Global Leaderboard</h3>
-                <p>Compete with quiz-takers around the world and climb to the top of the leaderboard.</p>
+                <h3>Personal Stats</h3>
+                <p>Track your progress and showcase your achievements as you aim for your personal best.</p>
             </div>
         </div>
     </section>
@@ -214,51 +304,50 @@ if ($current_time->getTimestamp() < $quiz_end_time->getTimestamp()) {
     </div>
 </section>
 
-
-    <section id="testimonials" class="testimonials-slider-section">
-        <h2>What Our Users Say</h2>
-        <div class="slider">
-            <div class="testimonial">
-                <p>"QuizEye has transformed the way I learn. The quizzes are engaging and informative!"</p>
-                <h4>- Taylor</h4>
-            </div>
-            <div class="testimonial">
-                <p>"I love the competitive aspect of the live tournaments. It keeps me motivated!"</p>
-                <h4>- Alex</h4>
-            </div>
-            <div class="testimonial">
-                <p>"The UI/UX of the platform is smooth, and the anti-cheat system is a game changer!"</p>
-                <h4>- Sarah</h4>
+<section id="faq" class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">
+                How do I join a quiz? 
+                <span class="arrow">&#9654;</span>
+            </h3>
+            <p class="faq-content">Simply log in, navigate to the "Quizzes" section, and click on "Take Quiz" to begin.</p>
+        </div>
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">
+                Is there a time limit for quizzes? 
+                <span class="arrow">&#9654;</span>
+            </h3>
+            <p class="faq-content">Yes, quizzes are timed. You need to finish them within the allocated time.</p>
+        </div>
+        <div class="faq-item">
+            <h3 onclick="toggleFaq(this)">
+                How can I view my results? 
+                <span class="arrow">&#9654;</span>
+            </h3>
+            <p class="faq-content">Your results will be available after you complete the quiz, and they will be posted to your dashboard.</p>
+        </div>
+    </div>
+</section>
+<footer id="contact">
+    <div class="footer-container">
+        <div class="contact-info">
+            <p>Contact us: <a href="mailto:quizeye@example.com">anshisubhipr@gmail.com</a></p>
+            <div class="social-media">
+                <a href="#" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
-    </section>
-
-    <section id="faq" class="faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3>How do I join a quiz?</h3>
-                <p>Simply log in, navigate to the "Quizzes" section, and click on "Take Quiz" to begin.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Is there a time limit for quizzes?</h3>
-                <p>Yes, quizzes are timed. You need to finish them within the allocated time.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How can I view my results?</h3>
-                <p>Your results will be available after you complete the quiz, and they will be posted to your dashboard.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="contact-info">
-                <p>Contact us: quizeye@example.com</p>
-                <p>Follow us on social media: <a href="#" target="_blank">Facebook</a>, <a href="#" target="_blank">Twitter</a>, <a href="#" target="_blank">Instagram</a></p>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="./assets/js/candidate_homepage.js"></script>
 </body>

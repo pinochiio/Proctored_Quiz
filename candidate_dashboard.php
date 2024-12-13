@@ -51,10 +51,11 @@ if (!$user) {
         </div>
         <ul class="sidebar-menu">
             <li data-target="profile-section-main"><i class="fas fa-user"></i>Profile</li>
+            <li ><a href="candidate_homepage.php" style="color: white; text-decoration: none;"><i class="fas fa-adjust icon"></i>Home</a></li>
             <li data-target="quizzes-section"><i class="fas fa-clipboard-list"></i>My Quizzes</li>
             <li data-target="statistics-section"><i class="fas fa-chart-bar"></i>Statistics</li>
             <li data-target="faq-section"><i class="fas fa-question-circle"></i>FAQs</li>
-            <li data-target="contact-section"><i class="fas fa-envelope"></i>Contact</li>
+            <li ><a href="support.php" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i>Contact</a></li>
             <li><a href="logout.php" style="color: white; text-decoration: none;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </div>
